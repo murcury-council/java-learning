@@ -2,7 +2,7 @@
 
 InnoDB如果没有定义主键索引，会选择一个**唯一**的**非空**索引代替。如果没有这样的索引，会隐式的定义一个主键来作为聚簇索引。
 
-![avator](https://static001.geekbang.org/resource/image/dc/8d/dcda101051f28502bd5c4402b292e38d.png)
+<img src="https://static001.geekbang.org/resource/image/dc/8d/dcda101051f28502bd5c4402b292e38d.png" width="400"/>
 
 * 主键索引的叶子节点存的是整行的数据。在InnoDB中，主键索引也被称为聚簇索引。
 * 非主键索引的叶子节点内容是主键的值。在InnoDB中，非主键索引也被称为二级索引。
@@ -21,11 +21,13 @@ B+树为了维护索引的有序性，在插入新值的时候需要做必要的
 
 ##### 最左前缀原则
 
-![avator](https://static001.geekbang.org/resource/image/89/70/89f74c631110cfbc83298ef27dcd6370.jpg)
+<img src="https://static001.geekbang.org/resource/image/89/70/89f74c631110cfbc83298ef27dcd6370.jpg" width="400"/>
 
 (name,age)联合索引
 
 ##### 索引下推
+
+`like 'jiang%' and age >10`检索，MySQL5.6版本之前会对匹配的数据进行回表查询。之后的版本会在索引遍历过程中，对**索引中包含的字段**先做判断，直接过滤掉不满足条件的记录。在刚才的语句中，就是查看age字段的数据，过滤掉age<=10的数据再进行回表查询
 
 无索引下推
 
@@ -35,6 +37,8 @@ B+树为了维护索引的有序性，在插入新值的时候需要做必要的
 
 <img src="https://static001.geekbang.org/resource/image/76/1b/76e385f3df5a694cc4238c7b65acfe1b.jpg" width="400px"/>
 
-`like 'jiang%' and age >10`检索，MySQL5.6版本之前会对匹配的数据进行回表查询。之后的版本会查看age字段的数据，过滤掉age<=10的数据再进行回表查询
+
+
+
 
 `Explain select * from T where city like "%杭州% order by name limit 100"`
