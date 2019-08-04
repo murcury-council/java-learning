@@ -28,7 +28,7 @@ LockSupport(LP)是实现阻塞的一种工具, 很多工具的底层都是使用
      public native void park(boolean var1, long var2);
      public native void unpark(Object var1);
      ```
-     其中park的boolean参数表示是否绝对时间,  long值表示时间值如果为0表示无线等待.  unpark的参数表示需要唤醒的线程.
+     其中park的boolean参数表示是否绝对时间,  long值表示时间值如果为0表示无限等待.  unpark的参数表示需要唤醒的线程.
 
   3. 调用park()或park(Object blocker)实现阻塞:
 
