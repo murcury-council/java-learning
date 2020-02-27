@@ -27,7 +27,7 @@ Tomcat 为了实现支持多种 I/O 和应用层协议，一个容器可能对�
 * Processor 负责提供 Tomcat Request 对象给 Adapter (应用层协议解析)
 * Adapter 负责提供 ServletRequest 给容器 (对象转化)
 
-由于 I/O 模型可以和应用层协议自由组合，所以讲网络通信和协议解析放在了一起考虑，设计了 ProtocolHandler 接口来封装这两种变化点。各种协议和通信模型的组合对接口进行具体实现。
+由于 I/O 模型可以和应用层协议自由组合，所以将网络通信和协议解析放在了一起考虑，设计了 ProtocolHandler 接口来封装这两种变化点。各种协议和通信模型的组合对接口进行具体实现。
 
 <img src="https://static001.geekbang.org/resource/image/6e/ce/6eeaeb93839adcb4e76c15ee93f545ce.jpg" style="zoom:40%;"/>
 
